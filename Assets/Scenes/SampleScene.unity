@@ -296,8 +296,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1382520952}
   - component: {fileID: 1382520951}
-  - component: {fileID: 1382520953}
   - component: {fileID: 1382520954}
+  - component: {fileID: 1382520955}
   m_Layer: 0
   m_Name: Charging Station
   m_TagString: Untagged
@@ -372,32 +372,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1382520953
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1382520950}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!114 &1382520954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -411,6 +385,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chargingStationMaterial: {fileID: 2100000, guid: 920db3da98cca4d458d6ef27ce121306, type: 2}
+--- !u!68 &1382520955
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382520950}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.4981327, y: 0.5018672}
+  - {x: 0.50202084, y: -0.50736356}
+  - {x: -0.49080765, y: -0.49215102}
+  - {x: -0.00058591366, y: -0.0051514506}
+  - {x: 0.46931434, y: -0.4771382}
+  - {x: 0.025748849, y: 0.03890583}
+  - {x: 0.47143328, y: 0.48533678}
+  - {x: -0.4934324, y: 0.49416617}
+  - {x: -0.22633243, y: 0.23354611}
+  - {x: -0.036799908, y: 0.039111316}
+  - {x: -0.48667085, y: -0.42463827}
+  - {x: -0.48513806, y: 0.4293753}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &1805722536
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,7 +632,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
