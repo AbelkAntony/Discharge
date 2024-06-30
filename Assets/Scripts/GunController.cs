@@ -7,21 +7,29 @@ public class GunController : MonoBehaviour
     [SerializeField] GameManager gameManager;
     //[SerializeField] GameObject bullet;
     private bool isGunActivate;
+    private Vector3 playerlocation;
     private float distance;
     private void Start()
     {
-        isGunActivate = false;  
+        isGunActivate = false;
+        playerlocation = gameManager.Getplayerlocation();
     }
     private void Update()
     {
-        distance = Vector3.Distance(gameManager.Getplayerlocation(), this.transform.position);
-        //Debug.Log(distance);
-        if (distance < gameManager.GetPlayerRange())
+        if(playerlocation != gameManager.Getplayerlocation())
         {
-            isGunActivate = true;
-            Fire();
+            playerlocation = gameManager.Getplayerlocation();
+            distance = Vector3.Distance(gameManager.Getplayerlocation(), this.transform.position);
+            Debug.Log(distance);
+            if (distance <= gameManager.GetPlayerRange())
+            {
+                isGunActivate = true;
+                Fire();
+            }
+            else { isGunActivate = false; }
+            
         }
-        else { isGunActivate = false; }
+        
 
 
     }
