@@ -4,18 +4,25 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] GameManager gameManager;
     [SerializeField] Material playerMaterial;
     private float startPosX;
     private float startPosY;
     private bool isBeigHeld = false;
     private Renderer playerRenderer;
     private Vector4 playerColor = new Vector4(1, 1, 1,1);
-
+    private bool isCharging;
+    private bool isdischarging;
+    private float charge;
+    private int chargingMultiplier = 1;
+    private int dischargingMultiplier = 1;
+    private float playerRange;
     void Start()
     {
         playerRenderer = this.gameObject.GetComponent<Renderer>();
         playerColor = new Vector3(255, 0, 0);
         playerRenderer.material.SetColor("_color", playerColor);
+        playerRange = .2f;
     }
 
     void Update()
@@ -30,7 +37,23 @@ public class PlayerController : MonoBehaviour
         }
 
 
+        if(isCharging && charge <=100)
+        {
+            charge += Time.deltaTime* chargingMultiplier;
+        }
+        else if(isdischarging && charge>=0)
+        {
+            charge -= Time.deltaTime * dischargingMultiplier;
+        }
+
+
     }
+
+    public void IsDischarging(bool state) { isdischarging = state; }
+
+    public Vector3 Getplayerlocation() { return this.transform.position; }
+
+    public float GetPlayerRange() { return GetPlayerRange(); }
 
     private void OnMouseDown()
     {
@@ -54,21 +77,21 @@ public class PlayerController : MonoBehaviour
 
 
 
-
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-
         if (collision.gameObject.name == "Charging Station")
         {
-            playerColor = new Vector4(0, 255, 0);
-            playerRenderer.material.SetColor("_color", playerColor);
-        }
-        else
-        {
-            playerColor = new Vector4(157, 0, 0);
-            playerRenderer.material.SetColor("_color", playerColor);
-
+            isCharging = true;
         }
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "Charging Station")
+        {
+            isCharging = false;
+        }
+    }
+
 
 }
