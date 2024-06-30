@@ -9,12 +9,12 @@ public class PlayerController : MonoBehaviour
     private float startPosY;
     private bool isBeigHeld = false;
     private Renderer playerRenderer;
-    private Color playerColor = new Color(255,0,0);
+    private Vector4 playerColor = new Vector4(1, 1, 1,1);
 
     void Start()
     {
         playerRenderer = this.gameObject.GetComponent<Renderer>();
-        playerColor = new Color(255, 0, 0);
+        playerColor = new Vector3(255, 0, 0);
         playerRenderer.material.SetColor("_color", playerColor);
     }
 
@@ -60,12 +60,12 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.name == "Charging Station")
         {
-            playerColor = new Color(0, 255, 0);
+            playerColor = new Vector4(0, 255, 0);
             playerRenderer.material.SetColor("_color", playerColor);
         }
         else
         {
-            playerColor = new Color(157, 0, 0);
+            playerColor = new Vector4(157, 0, 0);
             playerRenderer.material.SetColor("_color", playerColor);
 
         }

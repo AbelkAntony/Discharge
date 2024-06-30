@@ -384,7 +384,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5410b31221100e149a594f69b412e376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chargingStationMaterial: {fileID: 2100000, guid: 920db3da98cca4d458d6ef27ce121306, type: 2}
 --- !u!68 &1382520955
 EdgeCollider2D:
   m_ObjectHideFlags: 0
