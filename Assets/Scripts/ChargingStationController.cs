@@ -19,12 +19,12 @@ public class ChargingStationController : MonoBehaviour
         if(isCharging && charge > 0)
         {
             charge -= Time.deltaTime*2;
-            Debug.Log(charge);
+            //Debug.Log(charge);
         }
         else if(isCharging == false && charge < 100)
         {
             charge += Time.deltaTime;
-            Debug.Log(charge);
+            //Debug.Log(charge);
         }
     }
 

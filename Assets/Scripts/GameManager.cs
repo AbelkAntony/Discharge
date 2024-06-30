@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] PlayerController player;
+    [SerializeField] GunController gun;
     private float playerRange;
 
     
@@ -16,6 +17,10 @@ public class GameManager : MonoBehaviour
     {
         playerRange = player.GetPlayerRange();
         return playerRange;   
+    }
+    public bool IsGunActivated()
+    {
+        return gun.IsGunActivated();
     }
 
 }
