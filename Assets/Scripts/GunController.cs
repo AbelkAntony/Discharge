@@ -5,6 +5,8 @@ using UnityEngine;
 public class GunController : MonoBehaviour
 {
     [SerializeField] GameManager gameManager;
+    [SerializeField] GameObject bulletSpawnLocation;
+    [SerializeField] GameObject bulletPrefab;
     //[SerializeField] GameObject bullet;
     private bool isGunActivate;
     private Vector3 playerlocation;
