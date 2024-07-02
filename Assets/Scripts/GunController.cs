@@ -22,7 +22,6 @@ public class GunController : MonoBehaviour
         {
             playerlocation = gameManager.Getplayerlocation();
             distance = Vector3.Distance(gameManager.Getplayerlocation(), this.transform.position);
-            Debug.Log(distance);
             if (distance <= gameManager.GetPlayerRange())
             {
                 isGunActivate = true;
