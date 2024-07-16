@@ -7,10 +7,13 @@ public class GunController : MonoBehaviour
     [SerializeField] GameManager gameManager;
     [SerializeField] GameObject bulletSpawnLocation;
     [SerializeField] GameObject bulletPrefab;
+    [SerializeField] float defaultSpeed = 10;
     //[SerializeField] GameObject bullet;
     private bool isGunActivate;
     private Vector3 playerlocation;
     private float distance;
+    private GameObject enemy;
+    
     private void Start()
     {
         isGunActivate = false;
@@ -30,8 +33,8 @@ public class GunController : MonoBehaviour
             else { isGunActivate = false; }
             
         }
-        
 
+        RotateGun();
 
     }
 
@@ -44,5 +47,17 @@ public class GunController : MonoBehaviour
         {
             Debug.Log("gun activated");
         }
+    }
+
+    private void RotateGun()
+    {
+        enemy = GameObject.FindGameObjectWithTag("Enemy");
+        Vector3 targetDirection =    enemy.transform.position - transform.position ;
+        Quaternion rotate = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(targetDirection), defaultSpeed*Time.deltaTime);
+        rotate.x = 0;
+        rotate.y = 0;
+        //rotate.z = rotate.z - 45;
+        this.transform.rotation = rotate;
+        
     }
 }

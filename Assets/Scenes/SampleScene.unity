@@ -412,6 +412,7 @@ MonoBehaviour:
   gameManager: {fileID: 957792901}
   bulletSpawnLocation: {fileID: 1376221887}
   bulletPrefab: {fileID: 1883663588286335430}
+  defaultSpeed: 10
 --- !u!50 &1114308637
 Rigidbody2D:
   serializedVersion: 4
@@ -432,7 +433,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 3
 --- !u!61 &1114308638
 BoxCollider2D:
   m_ObjectHideFlags: 0
