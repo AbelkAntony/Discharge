@@ -33,7 +33,8 @@ public class GunController : MonoBehaviour
             else { isGunActivate = false; }
             
         }
-
+        if(enemy == null)
+            enemy = GameObject.FindGameObjectWithTag("Enemy");
         RotateGun();
 
     }
@@ -51,12 +52,10 @@ public class GunController : MonoBehaviour
 
     private void RotateGun()
     {
-        enemy = GameObject.FindGameObjectWithTag("Enemy");
-        Vector3 targetDirection =    enemy.transform.position - transform.position ;
-        Quaternion rotate = Quaternion.Slerp(this.transform.rotation, Quaternion.LookRotation(targetDirection), defaultSpeed*Time.deltaTime);
-        rotate.x = 0;
-        rotate.y = 0;
-        //rotate.z = rotate.z - 45;
+        
+        Vector3 targetDirection = enemy.transform.position - transform.position ;
+        float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
+        Quaternion rotate = Quaternion.AngleAxis(angle +90 ,Vector3.forward);
         this.transform.rotation = rotate;
         
     }
