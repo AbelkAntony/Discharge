@@ -7,11 +7,11 @@ public class GunController : MonoBehaviour
     [SerializeField] GameManager gameManager;
     [SerializeField] GameObject bulletSpawnLocation;
     [SerializeField] GameObject bulletPrefab;
-    [SerializeField] float defaultSpeed = 10;
+    //[SerializeField] float defaultSpeed = 10;
     //[SerializeField] GameObject bullet;
     private bool isGunActivate;
     private Vector3 playerlocation;
-    private float distance;
+    private float distanceBetweenPlayerAndGun;
     private GameObject enemy;
     
     private void Start()
@@ -21,42 +21,35 @@ public class GunController : MonoBehaviour
     }
     private void Update()
     {
-        if(playerlocation != gameManager.Getplayerlocation())
+        playerlocation = gameManager.Getplayerlocation();
+        distanceBetweenPlayerAndGun = Vector3.Distance(gameManager.Getplayerlocation(), this.transform.position);
+        if (distanceBetweenPlayerAndGun <= gameManager.GetPlayerRange() && gameManager.GetPlayerCharge() > 0)
         {
-            playerlocation = gameManager.Getplayerlocation();
-            distance = Vector3.Distance(gameManager.Getplayerlocation(), this.transform.position);
-            if (distance <= gameManager.GetPlayerRange())
-            {
-                isGunActivate = true;
-                Fire();
-            }
-            else { isGunActivate = false; }
-            
+            isGunActivate = true;
+            RotateGun();
         }
-        if(enemy == null)
-            enemy = GameObject.FindGameObjectWithTag("Enemy");
-        RotateGun();
-
+        else 
+        {
+            isGunActivate = false;
+            CancelInvoke("Fire");
+        }
     }
 
-    public bool IsGunActivated(){   return isGunActivate;   }
+    public bool IsGunActivated(){  return isGunActivate;   }
 
 
     private void Fire()
     {
-        if (isGunActivate)
-        {
-            Debug.Log("gun activated");
-        }
+       Instantiate(bulletPrefab, this.transform.position, this.transform.rotation);     
     }
 
     private void RotateGun()
     {
-        
+        if (enemy == null)
+            enemy = GameObject.FindGameObjectWithTag("Enemy");
         Vector3 targetDirection = enemy.transform.position - transform.position ;
         float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
         Quaternion rotate = Quaternion.AngleAxis(angle +90 ,Vector3.forward);
-        this.transform.rotation = rotate;
-        
+        this.transform.rotation = rotate;   
     }
 }

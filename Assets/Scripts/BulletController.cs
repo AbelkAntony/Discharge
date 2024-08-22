@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private float bulletSpeed = 1f;
+    private Rigidbody2D bulletRb;
+    public float maxLifeTime = 4f;
+    private void Start()
     {
-        
+        bulletRb = this.GetComponent<Rigidbody2D>();
+        Destroy(this.gameObject, maxLifeTime);
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        this.transform.position += this.transform.position * bulletSpeed * Time.deltaTime;
+
+    }
+   
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Destroy(this.gameObject);
     }
 }

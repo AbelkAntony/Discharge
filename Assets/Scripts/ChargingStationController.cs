@@ -19,12 +19,10 @@ public class ChargingStationController : MonoBehaviour
         if(isCharging && charge > 0)
         {
             charge -= Time.deltaTime*2;
-            //Debug.Log(charge);
         }
         else if(isCharging == false && charge < 100)
         {
             charge += Time.deltaTime;
-            //Debug.Log(charge);
         }
     }
 
@@ -34,7 +32,6 @@ public class ChargingStationController : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-            //Debug.Log("collision enter");
             chargingStationColor = new Color(255, 0, 0);
             chargingStationRenderer.material.color = Color.red;
             //this.gameObject.GetComponent<Renderer>().material.SetColor("_color", chargingStationColor);
@@ -44,7 +41,6 @@ public class ChargingStationController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        //Debug.Log("collision exit");
         chargingStationColor = new Color(0, 255, 0);
         chargingStationRenderer.material.SetColor("_color", chargingStationColor);
         isCharging = false;

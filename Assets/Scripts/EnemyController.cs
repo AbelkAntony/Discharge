@@ -19,7 +19,6 @@ public class EnemyController : MonoBehaviour
         numberOfPlayers = player.Length;
         attackingPlayer = player[Random.Range(0, numberOfPlayers)];
         spawnLocation = this.gameObject.transform.position;
-        Debug.Log(attackingPlayer.name);
         moveTo = attackingPlayer.transform.position;
     }
 
@@ -33,7 +32,6 @@ public class EnemyController : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
-            Debug.Log(collision.gameObject.name);   
             Reset();
         }
     }
@@ -44,7 +42,6 @@ public class EnemyController : MonoBehaviour
         this.transform.localScale = Vector3.one * this.size;
         this.gameObject.transform.position = spawnLocation;
         attackingPlayer = player[Random.Range(0, numberOfPlayers)];
-        Debug.Log(attackingPlayer.name);
         moveTo = attackingPlayer.transform.position;
     }
 

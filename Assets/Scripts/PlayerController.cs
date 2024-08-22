@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
         playerRenderer = this.gameObject.GetComponent<Renderer>();
         playerColor = new Vector3(255, 0, 0);
         playerRenderer.material.SetColor("_color", playerColor);
-        playerRange = .5f;
+        playerRange = 1f;
     }
 
     void Update()
@@ -40,13 +40,13 @@ public class PlayerController : MonoBehaviour
         if(isCharging && charge <=100)
         {
             charge += Time.deltaTime* chargingMultiplier;
+            Debug.Log(charge);
         }
-        else if(gameManager.IsGunActivated() && charge>=0)
+        if(!isCharging && gameManager.IsGunActivated() && charge>=0)
         {
             charge -= Time.deltaTime * dischargingMultiplier;
-
+            Debug.Log(charge);
         }
-
 
     }
 
@@ -55,6 +55,8 @@ public class PlayerController : MonoBehaviour
     public Vector3 Getplayerlocation() { return this.transform.position; }
 
     public float GetPlayerRange() { return playerRange; }
+
+    public float GetPlayerCharge() { return charge; }
 
     private void OnMouseDown()
     {

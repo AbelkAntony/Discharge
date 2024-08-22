@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
 
     public Vector3 Getplayerlocation()  {   return player.Getplayerlocation();   }
+    public float GetPlayerCharge() { return player.GetPlayerCharge();  }
     public float GetPlayerRange()       
     {
         playerRange = player.GetPlayerRange();
@@ -22,5 +23,7 @@ public class GameManager : MonoBehaviour
     {
         return gun.IsGunActivated();
     }
+
+
 
 }

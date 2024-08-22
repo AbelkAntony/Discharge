@@ -10,8 +10,4 @@ public class EnemySpawnner : MonoBehaviour
     {
         Instantiate(enemyPrefab, this.transform.position, Quaternion.identity);
     }
-    private void Update()
-    {
-        
-    }
 }
