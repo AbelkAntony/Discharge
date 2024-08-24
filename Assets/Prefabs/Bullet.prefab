@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb8350cd8ee6ccc43a81bfcbdf911d23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxLifeTime: 10
 --- !u!50 &680206564270768751
 Rigidbody2D:
   serializedVersion: 4
@@ -106,7 +107,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077904886655707349}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

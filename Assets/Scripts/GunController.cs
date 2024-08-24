@@ -18,6 +18,7 @@ public class GunController : MonoBehaviour
     {
         isGunActivate = false;
         playerlocation = gameManager.Getplayerlocation();
+        InvokeRepeating("Fire", 0, 2);
     }
     private void Update()
     {
@@ -31,7 +32,6 @@ public class GunController : MonoBehaviour
         else 
         {
             isGunActivate = false;
-            CancelInvoke("Fire");
         }
     }
 
@@ -40,7 +40,13 @@ public class GunController : MonoBehaviour
 
     private void Fire()
     {
-       Instantiate(bulletPrefab, this.transform.position, this.transform.rotation);     
+        if(isGunActivate)
+        {
+            Transform enemyLocation = enemy.transform;
+            GameObject bullet = Instantiate(bulletPrefab, bulletSpawnLocation.transform.position, this.transform.rotation);
+            //bullet.GetComponent<Rigidbody2D>().AddForce(transform.forward * 500,ForceMode2D.Force);
+            //Destroy(bullet, 20);
+        }
     }
 
     private void RotateGun()
