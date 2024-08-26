@@ -44,7 +44,7 @@ public class GunController : MonoBehaviour
         {
             Transform enemyLocation = enemy.transform;
             GameObject bullet = Instantiate(bulletPrefab, bulletSpawnLocation.transform.position, this.transform.rotation);
-            //bullet.GetComponent<Rigidbody2D>().AddForce(transform.forward * 500,ForceMode2D.Force);
+            bullet.GetComponent<Rigidbody2D>().AddForce(transform.forward * 500,ForceMode2D.Force);
             //Destroy(bullet, 20);
         }
     }
@@ -55,7 +55,7 @@ public class GunController : MonoBehaviour
             enemy = GameObject.FindGameObjectWithTag("Enemy");
         Vector3 targetDirection = enemy.transform.position - transform.position ;
         float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
-        Quaternion rotate = Quaternion.AngleAxis(angle +90 ,Vector3.forward);
+        Quaternion rotate = Quaternion.AngleAxis(angle -90 ,Vector3.forward);
         this.transform.rotation = rotate;   
     }
 }
