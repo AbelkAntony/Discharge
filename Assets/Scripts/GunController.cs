@@ -43,9 +43,10 @@ public class GunController : MonoBehaviour
         if(isGunActivate)
         {
             Transform enemyLocation = enemy.transform;
-            GameObject bullet = Instantiate(bulletPrefab, bulletSpawnLocation.transform.position, this.transform.rotation);
-            bullet.GetComponent<Rigidbody2D>().AddForce(transform.forward * 500,ForceMode2D.Force);
+            GameObject bullet = Instantiate(bulletPrefab, bulletSpawnLocation.transform.position, bulletSpawnLocation.transform.rotation);
+            //bullet.GetComponent<Rigidbody2D>().velocity += Vector2.up;
             //Destroy(bullet, 20);
+
         }
     }
 

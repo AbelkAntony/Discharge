@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    private float bulletSpeed = 1000f;
+    private float bulletSpeed = 5f;
     private Rigidbody2D bulletRb;
     public float maxLifeTime = 4f;
     private void Start()
@@ -21,7 +21,7 @@ public class BulletController : MonoBehaviour
     private void FixedUpdate()
     {
         //bulletRb.AddForce(Vector3.forward * bulletSpeed);
-        //Vector3.bulletRb.velocity +=  Vector3.forward;
+        bulletRb.velocity = transform.TransformDirection(Vector2.up*(bulletSpeed + bulletRb.velocity.magnitude));
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     private Vector4 playerColor = new Vector4(1, 1, 1,1);
     private bool isCharging;
     private bool isdischarging;
-    private float charge;
+    private float charge = 100f;
     private int chargingMultiplier = 1;
     private int dischargingMultiplier = 1;
     private float playerRange;
