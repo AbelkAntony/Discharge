@@ -7,20 +7,15 @@ public class BulletController : MonoBehaviour
     private float bulletSpeed = 1f;
     private Rigidbody2D bulletRb;
     public float maxLifeTime = 4f;
+    private float bulletDamage = 1;
     private void Start()
     {
         bulletRb = this.GetComponent<Rigidbody2D>();
         Destroy(this.gameObject, maxLifeTime);
     }
-    private void Update()
-    {
-        //this.transform.position += transform.forward * bulletSpeed * Time.deltaTime;
-
-    }
 
     private void FixedUpdate()
     {
-        //bulletRb.AddForce(Vector3.forward * bulletSpeed);
         bulletRb.velocity = transform.TransformDirection(Vector2.up*(bulletSpeed + bulletRb.velocity.magnitude));
     }
 
@@ -28,6 +23,21 @@ public class BulletController : MonoBehaviour
     {
         if(collision.tag == "Enemy")
         Destroy(this.gameObject);
+    }
+
+
+    public float GetBulletDamage()
+    {
+        return bulletDamage;
+    }
+
+    public void SetBulletDamage(float damage)
+    {
+        bulletDamage = damage;
+    }
+    public void SetBulletDamage()
+    {
+        bulletDamage = 1;
     }
    
 }

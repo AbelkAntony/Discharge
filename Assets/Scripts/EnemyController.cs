@@ -10,6 +10,7 @@ public class EnemyController : MonoBehaviour
     private Vector3 spawnLocation;
     private float minSize = 0.3f;
     private float maxSize = 1f;
+    private float life = 5;
     private float size = 1f;
     private GameObject attackingPlayer;
     private int numberOfPlayers;
@@ -34,6 +35,11 @@ public class EnemyController : MonoBehaviour
         {
             Reset();
         }
+        else if(collision.gameObject.tag == "Bullet")
+        {
+            //TakeDamage(GetComponent<GameManager>().GetBulletDamage());
+            TakeDamage(FindAnyObjectByType<GameManager>().GetBulletDamage());
+        }
     }
 
     private void Reset()
@@ -47,6 +53,12 @@ public class EnemyController : MonoBehaviour
 
     private void GetDirection()
     {
+
+    }
+
+    private void TakeDamage(float damage)
+    {
+        this.life = life - damage; 
 
     }
 }

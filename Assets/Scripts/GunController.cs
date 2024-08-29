@@ -13,7 +13,9 @@ public class GunController : MonoBehaviour
     private Vector3 playerlocation;
     private float distanceBetweenPlayerAndGun;
     private GameObject enemy;
-    
+    private float bulletDamage;
+
+
     private void Start()
     {
         isGunActivate = false;
@@ -44,8 +46,7 @@ public class GunController : MonoBehaviour
         {
             Transform enemyLocation = enemy.transform;
             GameObject bullet = Instantiate(bulletPrefab, bulletSpawnLocation.transform.position, bulletSpawnLocation.transform.rotation);
-            //bullet.GetComponent<Rigidbody2D>().velocity += Vector2.up;
-            //Destroy(bullet, 20);
+            bulletDamage = bullet.GetComponent<BulletController>().GetBulletDamage();
 
         }
     }
@@ -58,5 +59,9 @@ public class GunController : MonoBehaviour
         float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
         Quaternion rotate = Quaternion.AngleAxis(angle -90 ,Vector3.forward);
         this.transform.rotation = rotate;   
+    }
+    public float GetBulletDamge()
+    {
+        return bulletDamage;
     }
 }

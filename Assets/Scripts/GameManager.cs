@@ -23,7 +23,11 @@ public class GameManager : MonoBehaviour
     {
         return gun.IsGunActivated();
     }
-
+     
+    public float GetBulletDamage()
+    {
+        return gun.GetBulletDamge();
+    }
 
 
 }
