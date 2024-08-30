@@ -7,7 +7,7 @@ public class BulletController : MonoBehaviour
     private float bulletSpeed = 1f;
     private Rigidbody2D bulletRb;
     public float maxLifeTime = 4f;
-    private float bulletDamage = 1;
+    private int bulletDamage = 1;
     private void Start()
     {
         bulletRb = this.GetComponent<Rigidbody2D>();
@@ -26,12 +26,12 @@ public class BulletController : MonoBehaviour
     }
 
 
-    public float GetBulletDamage()
+    public int GetBulletDamage()
     {
         return bulletDamage;
     }
 
-    public void SetBulletDamage(float damage)
+    public void SetBulletDamage(int damage)
     {
         bulletDamage = damage;
     }

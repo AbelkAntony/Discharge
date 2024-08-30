@@ -13,7 +13,7 @@ public class GunController : MonoBehaviour
     private Vector3 playerlocation;
     private float distanceBetweenPlayerAndGun;
     private GameObject enemy;
-    private float bulletDamage;
+    private int bulletDamage;
 
 
     private void Start()
@@ -60,7 +60,7 @@ public class GunController : MonoBehaviour
         Quaternion rotate = Quaternion.AngleAxis(angle -90 ,Vector3.forward);
         this.transform.rotation = rotate;   
     }
-    public float GetBulletDamge()
+    public int GetBulletDamge()
     {
         return bulletDamage;
     }

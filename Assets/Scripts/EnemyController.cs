@@ -8,12 +8,13 @@ public class EnemyController : MonoBehaviour
     private GameObject[] player;
     private float speed = 1;
     private Vector3 spawnLocation;
-    private float minSize = 0.3f;
-    private float maxSize = 1f;
-    private float life = 5;
+    private float minSize = 0.5f;
+    private float maxSize = 1.5f;
+    private int life = 5;
     private float size = 1f;
     private GameObject attackingPlayer;
     private int numberOfPlayers;
+    private int score;
     private void Start()
     {
         player = GameObject.FindGameObjectsWithTag("Player");
@@ -48,6 +49,8 @@ public class EnemyController : MonoBehaviour
         this.transform.localScale = Vector3.one * this.size;
         this.gameObject.transform.position = spawnLocation;
         attackingPlayer = player[Random.Range(0, numberOfPlayers)];
+        life = Random.Range(1, 6);
+        score = Random.Range(1, 10);
         moveTo = attackingPlayer.transform.position;
     }
 
@@ -56,9 +59,17 @@ public class EnemyController : MonoBehaviour
 
     }
 
-    private void TakeDamage(float damage)
+    private void TakeDamage(int damage)
     {
-        this.life = life - damage; 
+        if(life > 0)
+        {
+            this.life = life - damage; 
+        }
+        else if (life< =0)
+        {
+            Reset();
+            GameManager.AddScore(score);
+        }
 
     }
 }

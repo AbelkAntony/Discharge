@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] PlayerController player;
     [SerializeField] GunController gun;
     private float playerRange;
+    private int score;
 
     
     public void SetPlayerRange(float radius) {    playerRange = radius;     }
@@ -24,10 +25,13 @@ public class GameManager : MonoBehaviour
         return gun.IsGunActivated();
     }
      
-    public float GetBulletDamage()
+    public int GetBulletDamage()
     {
         return gun.GetBulletDamge();
     }
-
+    public void AddScore(int _score)
+    {
+        score += _score;
+    }
 
 }
