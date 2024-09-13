@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    private GameManager gameManager;
     private Vector3 moveTo;
     private GameObject[] player;
     private float speed = 1;
@@ -17,6 +18,7 @@ public class EnemyController : MonoBehaviour
     private int score;
     private void Start()
     {
+        gameManager = FindAnyObjectByType<GameManager>();
         player = GameObject.FindGameObjectsWithTag("Player");
         numberOfPlayers = player.Length;
         attackingPlayer = player[Random.Range(0, numberOfPlayers)];
@@ -65,10 +67,10 @@ public class EnemyController : MonoBehaviour
         {
             this.life = life - damage; 
         }
-        else if (life< =0)
+        else if (life <= 0)
         {
             Reset();
-            GameManager.AddScore(score);
+            gameManager.AddScore(score);
         }
 
     }

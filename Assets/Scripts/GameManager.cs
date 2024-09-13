@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] PlayerController player;
     [SerializeField] GunController gun;
+    [SerializeField] TextMesh uiScore;
     private float playerRange;
     private int score;
 

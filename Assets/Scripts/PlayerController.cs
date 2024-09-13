@@ -5,7 +5,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] GameManager gameManager;
-    [SerializeField] Material playerMaterial;
+    [SerializeField] SpriteRenderer sr;
+    [SerializeField] Color charging;
+    [SerializeField] Color discharging;
+    [SerializeField] Color ideal;
     private float startPosX;
     private float startPosY;
     private bool isBeigHeld = false;
@@ -45,6 +48,7 @@ public class PlayerController : MonoBehaviour
         if(!isCharging && gameManager.IsGunActivated() && charge>=0)
         {
             charge -= Time.deltaTime * dischargingMultiplier;
+            sr.color = discharging;
             Debug.Log(charge);
         }
 
@@ -85,6 +89,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.name == "Charging Station")
         {
             isCharging = true;
+            sr.color = charging;
         }
     }
 
@@ -93,6 +98,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.name == "Charging Station")
         {
             isCharging = false;
+            sr.color = ideal;
         }
     }
 

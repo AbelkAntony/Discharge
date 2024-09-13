@@ -5,7 +5,9 @@ using UnityEngine;
 public class ChargingStationController : MonoBehaviour
 { 
     private Renderer chargingStationRenderer;
-    private Color chargingStationColor;
+    [SerializeField] SpriteRenderer sr;
+    [SerializeField] Color charging;
+    [SerializeField] Color discharging;
     private float charge;
     private bool isCharging = false;
     void Start()
@@ -32,17 +34,14 @@ public class ChargingStationController : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-            chargingStationColor = new Color(255, 0, 0);
-            chargingStationRenderer.material.color = Color.red;
-            //this.gameObject.GetComponent<Renderer>().material.SetColor("_color", chargingStationColor);
+            sr.color = discharging; 
             isCharging = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        chargingStationColor = new Color(0, 255, 0);
-        chargingStationRenderer.material.SetColor("_color", chargingStationColor);
+        sr.color = charging;
         isCharging = false;
     }
 }

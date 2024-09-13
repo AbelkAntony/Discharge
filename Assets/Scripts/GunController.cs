@@ -47,7 +47,6 @@ public class GunController : MonoBehaviour
             Transform enemyLocation = enemy.transform;
             GameObject bullet = Instantiate(bulletPrefab, bulletSpawnLocation.transform.position, bulletSpawnLocation.transform.rotation);
             bulletDamage = bullet.GetComponent<BulletController>().GetBulletDamage();
-
         }
     }
 
