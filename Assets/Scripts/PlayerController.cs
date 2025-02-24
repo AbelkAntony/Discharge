@@ -43,13 +43,13 @@ public class PlayerController : MonoBehaviour
         if(isCharging && charge <=100)
         {
             charge += Time.deltaTime* chargingMultiplier;
-            Debug.Log(charge);
+            //Debug.Log(charge);
         }
         if(!isCharging && gameManager.IsGunActivated() && charge>=0)
         {
             charge -= Time.deltaTime * dischargingMultiplier;
             sr.color = discharging;
-            Debug.Log(charge);
+            //Debug.Log(charge);
         }
 
     }

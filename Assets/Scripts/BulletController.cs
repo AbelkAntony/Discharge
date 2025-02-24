@@ -9,7 +9,7 @@ public class BulletController : MonoBehaviour
     public float maxLifeTime = 4f;
     private int bulletDamage = 1;
     private void Start()
-    {
+    { 
         bulletRb = this.GetComponent<Rigidbody2D>();
         Destroy(this.gameObject, maxLifeTime);
     }

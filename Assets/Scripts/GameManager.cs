@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMesh uiScore;
     private float playerRange;
     private int score;
+
 
     
     public void SetPlayerRange(float radius) {    playerRange = radius;     }

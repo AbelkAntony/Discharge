@@ -8,7 +8,7 @@ public class GunController : MonoBehaviour
     [SerializeField] GameObject bulletSpawnLocation;
     [SerializeField] GameObject bulletPrefab;
     //[SerializeField] float defaultSpeed = 10;
-    //[SerializeField] GameObject bullet;
+   // [SerializeField] int bulletSpeed =1;
     private bool isGunActivate;
     private Vector3 playerlocation;
     private float distanceBetweenPlayerAndGun;
@@ -20,7 +20,7 @@ public class GunController : MonoBehaviour
     {
         isGunActivate = false;
         playerlocation = gameManager.Getplayerlocation();
-        InvokeRepeating("Fire", 0, 2);
+        InvokeRepeating("Fire", 0, 1);
     }
     private void Update()
     {

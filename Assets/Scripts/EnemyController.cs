@@ -34,13 +34,15 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log(collision.name);
         if(collision.gameObject.tag == "Player")
         {
             Reset();
         }
-        else if(collision.gameObject.tag == "Bullet")
+        else if(collision.gameObject.name == "Bullet(Clone)")
         {
             //TakeDamage(GetComponent<GameManager>().GetBulletDamage());
+            Debug.Log("take damage");
             TakeDamage(FindAnyObjectByType<GameManager>().GetBulletDamage());
         }
     }
@@ -65,9 +67,11 @@ public class EnemyController : MonoBehaviour
     {
         if(life > 0)
         {
-            this.life = life - damage; 
+            this.life = life - damage;
+            Debug.Log("Enemy life");
+            Debug.Log(life);
         }
-        else if (life <= 0)
+        else //if (life <= 0)
         {
             Reset();
             gameManager.AddScore(score);
