@@ -42,7 +42,7 @@ public class EnemyController : MonoBehaviour
         else if(collision.gameObject.name == "Bullet(Clone)")
         {
             //TakeDamage(GetComponent<GameManager>().GetBulletDamage());
-            Debug.Log("take damage");
+            //Debug.Log("take damage");
             TakeDamage(FindAnyObjectByType<GameManager>().GetBulletDamage());
         }
     }
@@ -68,8 +68,8 @@ public class EnemyController : MonoBehaviour
         if(life > 0)
         {
             this.life = life - damage;
-            Debug.Log("Enemy life");
-            Debug.Log(life);
+            //Debug.Log("Enemy life");
+            //Debug.Log(life);
         }
         else //if (life <= 0)
         {

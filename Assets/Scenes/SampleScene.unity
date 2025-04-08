@@ -1463,10 +1463,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 957792901}
-  sr: {fileID: 1923801112}
+  srPlayer: {fileID: 1923801112}
   charging: {r: 0.06028545, g: 1, b: 0, a: 1}
   discharging: {r: 1, g: 0, b: 0, a: 1}
   ideal: {r: 1, g: 0.4540847, b: 0, a: 1}
+  batterydown: {r: 1, g: 0.8915094, b: 0.8915094, a: 1}
 --- !u!50 &1923801115
 Rigidbody2D:
   serializedVersion: 4

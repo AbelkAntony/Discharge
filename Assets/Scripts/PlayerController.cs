@@ -5,18 +5,19 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] GameManager gameManager;
-    [SerializeField] SpriteRenderer sr;
+    [SerializeField] SpriteRenderer srPlayer;
     [SerializeField] Color charging;
     [SerializeField] Color discharging;
     [SerializeField] Color ideal;
-    private float startPosX;
+	[SerializeField] Color batterydown;
+	private float startPosX;
     private float startPosY;
     private bool isBeigHeld = false;
     private Renderer playerRenderer;
     private Vector4 playerColor = new Vector4(1, 1, 1,1);
     private bool isCharging;
     private bool isdischarging;
-    private float charge = 100f;
+    private float charge = 10f;
     private int chargingMultiplier = 1;
     private int dischargingMultiplier = 1;
     private float playerRange;
@@ -43,16 +44,25 @@ public class PlayerController : MonoBehaviour
         if(isCharging && charge <=100)
         {
             charge += Time.deltaTime* chargingMultiplier;
-            //Debug.Log(charge);
+            Debug.Log(charge);
         }
         if(!isCharging && gameManager.IsGunActivated() && charge>=0)
         {
             charge -= Time.deltaTime * dischargingMultiplier;
-            sr.color = discharging;
-            //Debug.Log(charge);
+			srPlayer.color = discharging;
+            Debug.Log(charge);
         }
+        if (charge <=0)
+        {
+            srPlayer.color = batterydown;
 
-    }
+		}
+		if (!gameManager.IsGunActivated()&& !isCharging)
+        {
+            srPlayer.color = ideal;
+        }
+	
+	}
 
     public void IsDischarging(bool state) { isdischarging = state; }
 
@@ -89,7 +99,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.name == "Charging Station")
         {
             isCharging = true;
-            sr.color = charging;
+			srPlayer.color = charging;
         }
     }
 
@@ -98,7 +108,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.name == "Charging Station")
         {
             isCharging = false;
-            sr.color = ideal;
+			srPlayer.color = ideal;
         }
     }
 
