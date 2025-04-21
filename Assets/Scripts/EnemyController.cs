@@ -54,7 +54,7 @@ public class EnemyController : MonoBehaviour
         this.gameObject.transform.position = spawnLocation;
         attackingPlayer = player[Random.Range(0, numberOfPlayers)];
         life = Random.Range(1, 6);
-        score = Random.Range(1, 10);
+        score = life;
         moveTo = attackingPlayer.transform.position;
     }
 

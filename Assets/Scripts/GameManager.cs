@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
@@ -7,7 +8,9 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] PlayerController player;
     [SerializeField] GunController gun;
-    [SerializeField] TextMesh uiScore;
+    [SerializeField] DropboxController dropbox;
+    //[SerializeField] TextMesh uiScore;
+    [SerializeField] TextMeshPro uiScoreText;
     private float playerRange;
     private int score;
 
@@ -35,6 +38,10 @@ public class GameManager : MonoBehaviour
     public void AddScore(int _score)
     {
         score += _score;
+    }
+    public void DropBox()
+    {
+
     }
 
 }
