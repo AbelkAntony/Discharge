@@ -17,17 +17,22 @@ public class PlayerController : MonoBehaviour
     private Vector4 playerColor = new Vector4(1, 1, 1,1);
     private bool isCharging;
     private bool isdischarging;
-    private float charge = 10f;
+    private float charge = 100f;
     private int chargingMultiplier = 1;
     private int dischargingMultiplier = 1;
     private float playerRange;
+    private int life =10;
     void Start()
     {
         playerRenderer = this.gameObject.GetComponent<Renderer>();
         playerColor = new Vector3(255, 0, 0);
         playerRenderer.material.SetColor("_color", playerColor);
         playerRange = 1f;
+        gameManager.UpdatePlyerLife(life);
+        gameManager.ResetGame();
     }
+
+
 
     void Update()
     {
@@ -44,13 +49,13 @@ public class PlayerController : MonoBehaviour
         if(isCharging && charge <=100)
         {
             charge += Time.deltaTime* chargingMultiplier;
-            Debug.Log(charge);
+            //Debug.Log(charge);
         }
         if(!isCharging && gameManager.IsGunActivated() && charge>=0)
         {
             charge -= Time.deltaTime * dischargingMultiplier;
 			srPlayer.color = discharging;
-            Debug.Log(charge);
+            //Debug.Log(charge);
         }
         if (charge <=0)
         {
@@ -64,6 +69,13 @@ public class PlayerController : MonoBehaviour
 	
 	}
 
+    public void Reset()
+    {
+        charge = 100f;
+        chargingMultiplier = 1;
+        dischargingMultiplier = 1;
+        life = 10;
+    }
     public void IsDischarging(bool state) { isdischarging = state; }
 
     public Vector3 Getplayerlocation() { return this.transform.position; }
@@ -111,6 +123,22 @@ public class PlayerController : MonoBehaviour
 			srPlayer.color = ideal;
         }
     }
+    public int GetPlyerLife()
+    {
+        return life;
+    }
 
+    public void TakeDamage()
+    {
+        if(life>0)
+        {
+            life--;
+            gameManager.UpdatePlyerLife(life);
+        }
+        else
+        {
+            gameManager.GameOver();
+        }
+    }
 
 }

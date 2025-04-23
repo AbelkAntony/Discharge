@@ -9,8 +9,8 @@ public class EnemyController : MonoBehaviour
     private GameObject[] player;
     private float speed = 1;
     private Vector3 spawnLocation;
-    private float minSize = 0.5f;
-    private float maxSize = 1.5f;
+    private float minSize = 1f;
+    private float maxSize = 2f;
     private int life = 5;
     private float size = 1f;
     private GameObject attackingPlayer;
@@ -34,10 +34,11 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.name);
+        //Debug.Log(collision.name);
         if(collision.gameObject.tag == "Player")
         {
             Reset();
+            gameManager.PlayerTakeDamage();
         }
         else if(collision.gameObject.name == "Bullet(Clone)")
         {
