@@ -21,13 +21,14 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        highScore = PlayerPrefs.GetInt("highscore");
         uiHighscore.text = highScore.ToString();
 
     }
     public void StartGame()
     {
 
-        SceneManager.LoadScene("Discharge");
+        SceneManager.LoadScene("Instructions");
     }
 
     public void ResetGame()
@@ -80,6 +81,7 @@ public class GameManager : MonoBehaviour
         if(score > highScore)
         {
             highScore = score;
+            PlayerPrefs.SetInt("highscore", highScore);
         }
         SceneManager.LoadScene("Game Over");
         gameOver.SetActive(true);
