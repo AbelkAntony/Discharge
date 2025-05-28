@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     private Vector4 playerColor = new Vector4(1, 1, 1,1);
     private bool isCharging;
     private bool isdischarging;
-    private float charge = 100f;
+    private float charge = 50f;
     private int chargingMultiplier = 1;
     private int dischargingMultiplier = 1;
     private float playerRange;
@@ -43,12 +43,20 @@ public class PlayerController : MonoBehaviour
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
             this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, 0);
+            if (charge < 30)
+            {
+                chargingMultiplier = 4;
+            }
+            else if (charge < 60)
+            { chargingMultiplier = 2; }
+            else { chargingMultiplier = 1; }
         }
 
 
         if(isCharging && charge <=100)
         {
-            charge += Time.deltaTime* chargingMultiplier;
+            
+                charge += Time.deltaTime * chargingMultiplier;
             Debug.Log(charge);
         }
         if(!isCharging && gameManager.IsGunActivated() && charge>=0)
@@ -71,7 +79,7 @@ public class PlayerController : MonoBehaviour
 
     public void Reset()
     {
-        charge = 100f;
+        charge = 50f;
         chargingMultiplier = 1;
         dischargingMultiplier = 1;
         life = 10;
