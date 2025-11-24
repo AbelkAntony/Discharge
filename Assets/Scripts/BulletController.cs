@@ -16,7 +16,7 @@ public class BulletController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        bulletRb.velocity = transform.TransformDirection(Vector2.up*(bulletSpeed + bulletRb.velocity.magnitude));
+        bulletRb.linearVelocity = transform.TransformDirection(Vector2.up*(bulletSpeed + bulletRb.linearVelocity.magnitude));
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
